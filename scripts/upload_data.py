@@ -5,7 +5,7 @@ from random_username.generate import generate_username
 
 client = pymongo.MongoClient("mongodb+srv://aditya:cwwGe6sIS1rzQzTB@cluster0.aumcmvr.mongodb.net/?retryWrites=true&w=majority")
 db = client["crypto"]
-collection = db["coinlist"]
+collection = db["userData"]
 
 
 #
@@ -58,5 +58,5 @@ def get_data():
 
 res = get_data()
 
-collection.insert_many(res)
+collection.insert_one(res[0])
 print("donme")

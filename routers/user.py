@@ -19,15 +19,15 @@ def get_data():
 
 
 def update_data(user_id, amount,coin_name):
-    user_collection.update_one({"id": user_id}, {"$inc": {f"available_coins.$.{coin_name}": amount}})
+    user_collection.update_one({"user_id": user_id}, {"$inc": {f"available_coins.0.{coin_name}": amount}})
     print("data updated")
 
-update_data("excluded_Apples_6",5.4,"bitcoin")
+update_data("pacifiedBaboon0",5.4,"bitcoin")
 
 
 @router.get('/userDetail')
 def user_detail():
-    return get_data()
+    return get_data()[-1]
 
 
 # @router.put('/deposit')
